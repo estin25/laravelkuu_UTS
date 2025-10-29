@@ -1,30 +1,58 @@
 @extends('layouts.app')
-
 @section('title', 'Dashboard')
 
 @section('content')
-<h2 class="text-center mb-4">📊 Dashboard</h2>
-<div class="row text-center">
-    <div class="col-md-4 mb-3">
-        <div class="card p-4">
-            <h3>👤 User</h3>
-            <p>Kelola data akun user sistem.</p>
-            <a href="#" class="btn btn-info text-white">Lihat User</a>
-        </div>
-    </div>
-    <div class="col-md-4 mb-3">
-        <div class="card p-4">
-            <h3>📖 Buku</h3>
-            <p>Kelola data buku dan penulis.</p>
-            <a href="{{ route('books') }}" class="btn btn-primary">Lihat Buku</a>
-        </div>
-    </div>
-    <div class="col-md-4 mb-3">
-        <div class="card p-4">
-            <h3>📂 Kategori</h3>
-            <p>Atur kategori buku dengan mudah.</p>
-            <a href="#" class="btn btn-success">Lihat Kategori</a>
-        </div>
-    </div>
+<div class="text-center mb-4">
+  <h2>📊 Dashboard</h2>
 </div>
+
+<div class="row justify-content-center">
+  {{-- Kartu Total Buku --}}
+  <div class="col-md-3">
+    <a href="{{ route('buku.index') }}" class="text-decoration-none">
+      <div class="card text-white bg-primary mb-3 shadow-sm hover-card">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Total Buku</h5>
+          <p class="card-text display-6">{{ $totalBuku }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  {{-- Kartu Total Kategori --}}
+  <div class="col-md-3">
+    <a href="{{ route('kategori.index') }}" class="text-decoration-none">
+      <div class="card text-white bg-success mb-3 shadow-sm hover-card">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Total Kategori</h5>
+          <p class="card-text display-6">{{ $totalKategori }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  {{-- Kartu Total Penerbit --}}
+  <div class="col-md-3">
+    <a href="{{ route('penerbit.index') }}" class="text-decoration-none">
+      <div class="card text-white bg-warning mb-3 shadow-sm hover-card">
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold text-dark">Total Penerbit</h5>
+          <p class="card-text display-6 text-dark">{{ $totalPenerbit }}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  /* ✨ Tambahan efek hover biar interaktif */
+  .hover-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+  .hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+</style>
 @endsection

@@ -6,8 +6,15 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    /**
+     * Jalankan semua seeder yang diperlukan aplikasi.
+     */
     public function run(): void
     {
-        $this->call(BookSeeder::class);
+        $this->call([
+            KategoriSeeder::class,
+            PenerbitSeeder::class,
+            BukuSeeder::class,
+        ]);
     }
 }
